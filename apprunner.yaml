@@ -1,0 +1,23 @@
+version: 1.0
+source:
+  type: git
+  repositoryUrl: https://github.com/MkAlkawari/open-webui
+  branch: main
+runtime:
+  runtimeEnvironment: nodejs16 # Update based on the required Node.js version
+  buildCommand: npm install && npm run build # Adjust if the project uses a different build process
+  startCommand: npm start # Use the correct command to start the app
+
+instanceConfiguration:
+  cpu: 1024 # Customize based on your app's resource needs
+  memory: 2048
+  port: 3000 # Update if your app uses a different port
+
+autoDeploymentsEnabled: true # Enable automatic deployments when changes are pushed to the branch
+
+healthCheckConfiguration:
+  path: /health # Adjust to match your app's health check endpoint
+  interval: 10 # Time in seconds
+  timeout: 5
+  healthyThreshold: 2
+  unhealthyThreshold: 5
